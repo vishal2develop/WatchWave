@@ -4,6 +4,8 @@ import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import { Asset, useAssets } from "expo-asset";
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
+import Tabs from "./navigation/Tabs";
 
 const loadFonts = (fonts) =>
   fonts.map(async (font) => await Font.loadAsync(font));
@@ -32,9 +34,15 @@ export default function App() {
     SplashScreen.hideAsync();
   }
 
+  // return (
+  //   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+  //     <Text>SplashScreen Demo! 👋</Text>
+  //   </View>
+  // );
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>SplashScreen Demo! 👋</Text>
-    </View>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   );
 }
