@@ -1,4 +1,9 @@
-import { Dimensions, ActivityIndicator, ScrollView } from "react-native";
+import {
+  Dimensions,
+  ActivityIndicator,
+  ScrollView,
+  RefreshControl,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -82,6 +87,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [trending, setTrending] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
 
   const getNowPlaying = async () => {
     const options = {
@@ -145,18 +151,28 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
   useEffect(() => {
     getMovieData();
   }, []);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await getMovieData();
+    setRefreshing(false);
+  };
   return loading ? (
     <Loader>
       <ActivityIndicator />
     </Loader>
   ) : (
-    <Container>
+    <Container
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <Swiper
         horizontal
         containerStyle={{
           width: "100%",
           height: height / 4,
-          marginBottom: 30,
+          marginBottom: 40,
         }}
         loop
         autoplay
