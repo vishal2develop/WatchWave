@@ -1154,7 +1154,7 @@
   resolved "https://registry.npmjs.org/@babel/regjsgen/-/regjsgen-0.8.0.tgz"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.20.0", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.20.0", "@babel/runtime@^7.20.6", "@babel/runtime@^7.8.4":
   version "7.23.9"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.23.9.tgz"
   integrity sha512-0CX6F+BI2s9dkUqr08KFrAIZgNFj75rdBU/DjCyYLIaV/quFjkk6T+EJ2LkZHyZTbEV4L5p97mNkUsHl2wLFAw==
@@ -3200,6 +3200,11 @@ dotenv-expand@~10.0.0:
   resolved "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-10.0.0.tgz"
   integrity sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==
 
+dotenv@^16.4.1:
+  version "16.4.4"
+  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.4.4.tgz"
+  integrity sha512-XvPXc8XAQThSjAbY6cQ/9PcBXmFoWuw1sQ3b8HqUCR6ziGXjkTi//kB9SWa2UwqlgdAIuRqAa/9hVljzPehbYg==
+
 dotenv@~16.0.3:
   version "16.0.3"
   resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz"
@@ -3369,6 +3374,11 @@ expo-asset@~9.0.2:
     expo-file-system "~16.0.0"
     invariant "^2.2.4"
     md5-file "^3.2.3"
+
+expo-blur@~12.9.1:
+  version "12.9.1"
+  resolved "https://registry.npmjs.org/expo-blur/-/expo-blur-12.9.1.tgz"
+  integrity sha512-Motzx1vp73qLtEJ1UFVgn2KMyohsl0UM7sUwHoSqBc/BEkaaHS4+FxHt/6+1Tscfwrg/bZ6gv52+TbgGyQPXOA==
 
 expo-constants@~15.4.0:
   version "15.4.5"
@@ -5354,7 +5364,7 @@ prompts@^2.3.2, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5459,6 +5469,13 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-dotenv@^3.4.10:
+  version "3.4.10"
+  resolved "https://registry.npmjs.org/react-native-dotenv/-/react-native-dotenv-3.4.10.tgz"
+  integrity sha512-GADCAx3qJ9pjnRYMzQVliTnQto5W+38qoQyZGvo4snTv08cT/EQ7/2iyuwVPd/jms1rzVSra5QC/F+lbNWOAKQ==
+  dependencies:
+    dotenv "^16.4.1"
+
 "react-native-safe-area-context@>= 3.0.0", react-native-safe-area-context@4.8.2:
   version "4.8.2"
   resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.8.2.tgz"
@@ -5471,6 +5488,20 @@ react-is@^17.0.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-swiper@^1.6.0-rc.3:
+  version "1.6.0-rc.3"
+  resolved "https://registry.npmjs.org/react-native-swiper/-/react-native-swiper-1.6.0-rc.3.tgz"
+  integrity sha512-aZk6M7WsFdxlfHfS6OKb7gsaS3q7Z4Oqm8iTyJO7duE28EUK9kzfA2Cp5S6FdZkGXoWCXoUFGlzaO0lnhW/jtw==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-web-swiper@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.npmjs.org/react-native-web-swiper/-/react-native-web-swiper-2.2.4.tgz"
+  integrity sha512-Lq6fgCuVhEzxgWJU5t+wWhCoOfd0jfQ1Qdwyww/Kln4McPXFKQ6MaSuUHltnFOKYHej97R7avPchn+QB1wIFQg==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-native@*, react-native@0.73.4:
   version "0.73.4"

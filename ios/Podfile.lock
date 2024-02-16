@@ -7,6 +7,8 @@ PODS:
     - ExpoModulesCore
   - Expo (50.0.6):
     - ExpoModulesCore
+  - ExpoBlur (12.9.1):
+    - ExpoModulesCore
   - ExpoFileSystem (16.0.6):
     - ExpoModulesCore
   - ExpoKeepAwake (12.8.2):
@@ -1090,6 +1092,7 @@ DEPENDENCIES:
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - Expo (from `../node_modules/expo`)
+  - ExpoBlur (from `../node_modules/expo-blur/ios`)
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
@@ -1163,6 +1166,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   Expo:
     :path: "../node_modules/expo"
+  ExpoBlur:
+    :path: "../node_modules/expo-blur/ios"
   ExpoFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   ExpoKeepAwake:
@@ -1275,6 +1280,7 @@ SPEC CHECKSUMS:
   EXConstants: 988aa430ca0f76b43cd46b66e7fae3287f9cc2fc
   EXFont: 21b9c760abd593ce8f0d5386b558ced76018506f
   Expo: fb745b3074989670b6641f9f20463e8ee56a69ca
+  ExpoBlur: 2eb7f7ac50c0818ee7d596996e4c0112b3d225f6
   ExpoFileSystem: a9273932e69a9a1e1a8d01b6ba895bb8294bbea2
   ExpoKeepAwake: 0f5cad99603a3268e50af9a6eb8b76d0d9ac956c
   ExpoModulesCore: 96d1751929ad10622773bb729ab28a8423f0dd0c
@@ -1329,8 +1335,8 @@ SPEC CHECKSUMS:
   ReactCommon: 840a955d37b7f3358554d819446bffcf624b2522
   RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  Yoga: 1b901a6d6eeba4e8a2e8f308f708691cdb5db312
+  Yoga: 64cd2a583ead952b0315d5135bf39e053ae9be70
 
 PODFILE CHECKSUM: 8a21b37f30146a27b93bb410b4c326295fc72893
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.11.3
