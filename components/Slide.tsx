@@ -5,6 +5,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { BlurView } from "expo-blur";
 import { makeImagePath } from "../utils";
 import Poster from "./Poster";
+import Votes from "./Votes";
 
 const BgImg = styled.Image``;
 
@@ -30,10 +31,6 @@ const Overview = styled.Text<{ isDark: boolean }>`
   color: ${(props) =>
     props.isDark ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.8);"};
   margin-top: 10px;
-`;
-
-const Votes = styled(Overview)`
-  font-size: 12px;
 `;
 
 interface ISlideProps {
@@ -69,9 +66,8 @@ const Slide: React.FC<ISlideProps> = ({
           <Poster path={posterPath} />
           <Column>
             <Title isDark={isDark}>{originalTitle}</Title>
-            {voteAverage > 0 ? (
-              <Votes isDark={isDark}>⭐️{Math.round(voteAverage)}/10</Votes>
-            ) : null}
+            <Votes votes={voteAverage} />
+
             <Overview isDark={isDark}>{overview.slice(0, 80)}...</Overview>
           </Column>
         </Wrapper>
