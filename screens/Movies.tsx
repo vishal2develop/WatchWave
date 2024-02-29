@@ -6,7 +6,7 @@ import Swiper from "react-native-swiper";
 import Slide from "../components/Slide";
 import HMedia from "../components/HMedia";
 import VMedia from "../components/VMedia";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { moviesApi } from "../api";
 
 const { height } = Dimensions.get("window");
@@ -45,26 +45,41 @@ const HSeparator = styled.View`
 `;
 
 const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
-  const [refreshing, setRefreshing] = useState(false);
-
-  const { isLoading: nowPlayingLoading, data: nowPlayingData } = useQuery({
-    queryKey: ["nowPlaying"],
+  const queryClient = useQueryClient();
+  const {
+    isLoading: nowPlayingLoading,
+    data: nowPlayingData,
+    isRefetching: isRefetchingNowPlaying,
+  } = useQuery({
+    queryKey: ["movies", "nowPlaying"],
     queryFn: moviesApi.nowPlaying,
   });
 
-  const { isLoading: upcomingLoading, data: upcomingData } = useQuery({
-    queryKey: ["upcoming"],
+  const {
+    isLoading: upcomingLoading,
+    data: upcomingData,
+    isRefetching: isRefetchingUpcoming,
+  } = useQuery({
+    queryKey: ["movies", "upcoming"],
     queryFn: moviesApi.upcoming,
   });
 
-  const { isLoading: trendingLoading, data: trendingData } = useQuery({
-    queryKey: ["trending"],
+  const {
+    isLoading: trendingLoading,
+    data: trendingData,
+    isRefetching: isRefetchingTrending,
+  } = useQuery({
+    queryKey: ["movies", "trending"],
     queryFn: moviesApi.trending,
   });
 
-  const onRefresh = async () => {};
+  const onRefresh = async () => {
+    queryClient.refetchQueries({ queryKey: ["movies"] });
+  };
 
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
+  const refreshing =
+    isRefetchingNowPlaying || isRefetchingUpcoming || isRefetchingTrending;
 
   const renderVerticalMedia = ({ item }) => (
     <VMedia
