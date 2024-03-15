@@ -78,6 +78,24 @@ export const moviesApi = {
       options
     ).then((res) => res.json());
   },
+  search: ({ queryKey }: any) => {
+    console.log("queryKey1:", queryKey);
+
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_READ_ACCESS_TOKEN}`,
+      },
+    };
+    const [_, query] = queryKey;
+    console.log("query1", query);
+
+    return fetch(
+      `${BASE_URL}/search/movie?language=${LANGUAGE}&page=1&query=${query}`,
+      options
+    ).then((res) => res.json());
+  },
 };
 
 export const tvApi = {
@@ -117,6 +135,24 @@ export const tvApi = {
     };
     return fetch(
       `${BASE_URL}/tv/top_rated?language=${LANGUAGE}&page=1&&region=${REGION}`,
+      options
+    ).then((res) => res.json());
+  },
+  search: ({ queryKey }: any) => {
+    console.log("queryKey2:", queryKey);
+
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_READ_ACCESS_TOKEN}`,
+      },
+    };
+    const [_, query] = queryKey;
+    console.log("query", query);
+
+    return fetch(
+      `${BASE_URL}/search/tv?language=${LANGUAGE}&page=1&query=${query}`,
       options
     ).then((res) => res.json());
   },
