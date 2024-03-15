@@ -17,7 +17,7 @@ const Text = styled.Text`
 const Votes: React.FC<VotesProps> = ({ votes }) => (
   <Text>
     {votes > 0
-      ? `⭐️${Math.round((votes + Number.EPSILON) * 100) / 100}/10`
+      ? `⭐️${Math.round((votes + Number.EPSILON) * 10) / 10}/10`
       : `Coming soon`}
   </Text>
 );
