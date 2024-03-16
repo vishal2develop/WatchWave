@@ -5,7 +5,6 @@ import styled from "styled-components/native";
 const Container = styled.ScrollView`
   background-color: ${(props) => props.theme.mainBgColor};
 `;
-
 const Detail = ({
   navigation: { setOptions },
   route: {
@@ -19,7 +18,7 @@ const Detail = ({
   }, []);
   return (
     <Container>
-      <Text>Detail</Text>
+      <Text>{originalTitle}</Text>
     </Container>
   );
 };

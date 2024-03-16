@@ -1,7 +1,7 @@
 import { ScrollView, RefreshControl } from "react-native";
 import React, { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { tvApi } from "../api";
+import { tvApi, TVResponse } from "../api";
 import Loader from "../components/Loader";
 import Hlist from "../components/Hlist";
 
@@ -41,11 +41,15 @@ const Tv = () => {
       }
       contentContainerStyle={{ paddingVertical: 30 }}
     >
-      <Hlist title="Trending TV" data={trendingData.results} />
+      {trendingData ? (
+        <Hlist title="Trending TV" data={trendingData.results} />
+      ) : null}
 
-      <Hlist title="Airing Today" data={todayData.results} />
+      {todayData ? (
+        <Hlist title="Airing Today" data={todayData.results} />
+      ) : null}
 
-      <Hlist title="Top Rated TV" data={topData.results} />
+      {topData ? <Hlist title="Top Rated TV" data={topData.results} /> : null}
     </ScrollView>
   );
 };

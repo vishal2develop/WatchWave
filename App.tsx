@@ -16,10 +16,23 @@ import { ThemeProvider } from "styled-components/native";
 
 const queryClient = new QueryClient();
 
-const loadFonts = (fonts) =>
-  fonts.map(async (font) => await Font.loadAsync(font));
+const loadFonts = (
+  fonts:
+    | string[]
+    | {
+        [fontFamily: string]: Font.FontSource;
+      }[]
+) => fonts.map(async (font) => await Font.loadAsync(font));
 
-const loadImages = (images) =>
+const loadFonts2 = (
+  fonts:
+    | string[]
+    | {
+        [fontFamily: string]: Font.FontSource;
+      }[]
+) => fonts.map((font) => Font.loadAsync(font));
+
+const loadImages = (images: string[] | number[] | string[][] | number[][]) =>
   images.map((image) => {
     if (typeof image === "string") {
       return Image.prefetch(image);

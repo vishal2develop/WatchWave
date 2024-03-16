@@ -25,7 +25,7 @@ const Overview = styled.Text`
 const Release = styled.Text`
   color: ${(props) => props.theme.textColor};
   font-size: 12px;
-  margin-vertical: 10px;
+  margin: 10px;
   font-weight: 500;
   opacity: 0.6;
 `;

@@ -19,16 +19,8 @@ const ListTitle = styled.Text`
   margin-left: 30px;
 `;
 
-const ListContainer = styled.View`
-  margin-bottom: 40px;
-`;
-
 const ComingSoonTitle = styled(ListTitle)`
   margin-bottom: 20px;
-`;
-
-const VSeparator = styled.View`
-  width: 20px;
 `;
 
 const HSeparator = styled.View`
@@ -38,23 +30,20 @@ const HSeparator = styled.View`
 const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
   const [refreshing, setRefreshing] = useState(false);
   const queryClient = useQueryClient();
-  const { isLoading: nowPlayingLoading, data: nowPlayingData } =
-    useQuery<MovieResponse>({
-      queryKey: ["movies", "nowPlaying"],
-      queryFn: moviesApi.nowPlaying,
-    });
+  const { isLoading: nowPlayingLoading, data: nowPlayingData } = useQuery({
+    queryKey: ["movies", "nowPlaying"],
+    queryFn: moviesApi.nowPlaying,
+  });
 
-  const { isLoading: upcomingLoading, data: upcomingData } =
-    useQuery<MovieResponse>({
-      queryKey: ["movies", "upcoming"],
-      queryFn: moviesApi.upcoming,
-    });
+  const { isLoading: upcomingLoading, data: upcomingData } = useQuery({
+    queryKey: ["movies", "upcoming"],
+    queryFn: moviesApi.upcoming,
+  });
 
-  const { isLoading: trendingLoading, data: trendingData } =
-    useQuery<MovieResponse>({
-      queryKey: ["movies", "trending"],
-      queryFn: moviesApi.trending,
-    });
+  const { isLoading: trendingLoading, data: trendingData } = useQuery({
+    queryKey: ["movies", "trending"],
+    queryFn: moviesApi.trending,
+  });
 
   const onRefresh = async () => {
     setRefreshing(true);

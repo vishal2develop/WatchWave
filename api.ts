@@ -1,3 +1,5 @@
+import { QueryFunction } from "@tanstack/react-query";
+
 const API_READ_ACCESS_TOKEN = process.env.API_READ_ACCESS_TOKEN;
 
 interface BaseResponse {
@@ -24,8 +26,33 @@ export interface Movie {
   vote_count: number;
 }
 
+export interface TV {
+  name: string;
+  original_name: string;
+  origin_country: string[];
+  vote_count: number;
+  backdrop_path: string | null;
+  vote_average: number;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  overview: string;
+  poster_path: string | null;
+  first_air_date: string;
+  popularity: number;
+  media_type: string;
+}
+
 export interface MovieResponse extends BaseResponse {
   results: Movie[];
+}
+
+export interface TVResponse extends BaseResponse {
+  results: TV[];
+}
+
+interface Fetchers<T> {
+  [key: string]: QueryFunction<T>;
 }
 
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -38,7 +65,7 @@ const nowPlaying = "";
 
 const upcoming = "";
 
-export const moviesApi = {
+export const moviesApi: Fetchers<MovieResponse> = {
   trending: () => {
     const options = {
       method: "GET",
@@ -98,7 +125,7 @@ export const moviesApi = {
   },
 };
 
-export const tvApi = {
+export const tvApi: Fetchers<TVResponse> = {
   trending: () => {
     const options = {
       method: "GET",
