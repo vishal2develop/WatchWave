@@ -6,7 +6,7 @@ import Swiper from "react-native-swiper";
 import Slide from "../components/Slide";
 import HMedia from "../components/HMedia";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { MovieResponse, moviesApi } from "../api";
+import { moviesApi } from "../api";
 import Loader from "../components/Loader";
 import Hlist from "../components/Hlist";
 
