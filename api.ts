@@ -123,6 +123,22 @@ export const moviesApi: Fetchers<MovieResponse> = {
       options
     ).then((res) => res.json());
   },
+
+  detail: ({ queryKey }: any) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_READ_ACCESS_TOKEN}`,
+      },
+    };
+    const [_, id] = queryKey;
+
+    return fetch(
+      `${BASE_URL}/movie/${id}?language=${LANGUAGE}&append_to_response=videos,images`,
+      options
+    ).then((res) => res.json());
+  },
 };
 
 export const tvApi: Fetchers<TVResponse> = {
@@ -180,6 +196,21 @@ export const tvApi: Fetchers<TVResponse> = {
 
     return fetch(
       `${BASE_URL}/search/tv?language=${LANGUAGE}&page=1&query=${query}`,
+      options
+    ).then((res) => res.json());
+  },
+  detail: ({ queryKey }: any) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_READ_ACCESS_TOKEN}`,
+      },
+    };
+    const [_, id] = queryKey;
+
+    return fetch(
+      `${BASE_URL}/tv/${id}?language=${LANGUAGE}&append_to_response=videos,images`,
       options
     ).then((res) => res.json());
   },
