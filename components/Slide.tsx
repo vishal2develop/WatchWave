@@ -13,6 +13,7 @@ import { BlurView } from "expo-blur";
 import { makeImagePath } from "../utils";
 import Poster from "./Poster";
 import Votes from "./Votes";
+import { Movie } from "../api";
 
 const BgImg = styled.Image``;
 
@@ -46,6 +47,7 @@ interface ISlideProps {
   voteAverage: number;
   originalTitle: string;
   overview: string;
+  fullData: Movie;
 }
 
 const Slide: React.FC<ISlideProps> = ({
@@ -54,6 +56,7 @@ const Slide: React.FC<ISlideProps> = ({
   voteAverage,
   originalTitle,
   overview,
+  fullData,
 }) => {
   const isDark = useColorScheme() === "dark";
   const navigation = useNavigation();
@@ -61,7 +64,7 @@ const Slide: React.FC<ISlideProps> = ({
     //@ts-ignore
     navigation.navigate("Stack", {
       screen: "Detail",
-      params: { originalTitle },
+      params: { ...fullData },
     });
   };
 
