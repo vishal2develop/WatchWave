@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, useColorScheme } from "react-native";
 import React, { useEffect } from "react";
 import styled from "styled-components/native";
 import { Movie, MovieDetails, moviesApi, TV, TVDetails, tvApi } from "../api";
@@ -7,7 +7,7 @@ import Poster from "../components/Poster";
 import { Dimensions, StyleSheet, Share, Platform } from "react-native";
 import { makeImagePath } from "../utils";
 import { LinearGradient } from "expo-linear-gradient";
-import { BLACK_COLOR } from "../constants/colors";
+import { BLACK_COLOR, WHITE_COLOR, YELLOW_COLOR } from "../constants/colors";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../components/Loader";
 import { Ionicons } from "@expo/vector-icons";
@@ -71,9 +71,15 @@ const Detail: React.FC<DetailScreenProps> = ({
   route: { params },
 }) => {
   const ShareButton = () => {
+    const isDark = useColorScheme() === "dark";
+
     return (
       <TouchableOpacity onPress={shareMedia}>
-        <Ionicons name="share-outline" color="white" size={24} />
+        <Ionicons
+          name="share-outline"
+          color={isDark ? YELLOW_COLOR : BLACK_COLOR}
+          size={24}
+        />
       </TouchableOpacity>
     );
   };
