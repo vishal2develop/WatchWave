@@ -199,8 +199,6 @@ export const moviesApi: MovieFetchers = {
     ).then((res) => res.json());
   },
   search: ({ queryKey }: any) => {
-    console.log("queryKey1:", queryKey);
-
     const options = {
       method: "GET",
       headers: {
@@ -209,7 +207,6 @@ export const moviesApi: MovieFetchers = {
       },
     };
     const [_, query] = queryKey;
-    console.log("query1", query);
 
     return fetch(
       `${BASE_URL}/search/movie?language=${LANGUAGE}&page=1&query=${query}`,
@@ -275,8 +272,6 @@ export const tvApi: TVFetchers = {
     ).then((res) => res.json());
   },
   search: ({ queryKey }: any) => {
-    console.log("queryKey2:", queryKey);
-
     const options = {
       method: "GET",
       headers: {
@@ -285,7 +280,6 @@ export const tvApi: TVFetchers = {
       },
     };
     const [_, query] = queryKey;
-    console.log("query", query);
 
     return fetch(
       `${BASE_URL}/search/tv?language=${LANGUAGE}&page=1&query=${query}`,
