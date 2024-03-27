@@ -13,6 +13,12 @@ WatchWave is a comprehensive movie and TV show catalog app built with React Nati
 ## Screenshots
 
 [Include screenshots of your app here]
+![Movies Screen](/Screenshots/Movies_Screen.png)
+![TV Screen](/Screenshots/TV_Screen.png)
+![Search Screen](/Screenshots/Search_Screen.png)
+![Detail Screen](/Screenshots/Detail_Screen.png)
+![Youtube View](/Screenshots/Youtube_View.png)
+![Share Screen](/Screenshots/Share_Screen.png)
 
 ## Technologies Used
 
