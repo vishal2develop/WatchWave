@@ -37,6 +37,14 @@ WatchWave is a comprehensive movie and TV show catalog app built with React Nati
 - npm or yarn
 - Android/iOS emulator or physical device for testing
 
+# Environment Variables
+
+WatchWave uses environment variables for configuration. You'll need to set up these variables before running the app. Create a `.env` file in the root directory of your project by copying the `.env.sample` file and replacing the placeholders with actual values.
+
+## `.env.sample`
+
+For your convenience, a `.env.sample` file is provided in the root directory of the project. You can use this file as a template to create your `.env` file. It contains the following variables:
+
 ### Installation
 
 1. Clone the repository:
@@ -48,7 +56,7 @@ git clone https://github.com/vishal2develop/WatchWave.git
 cd watchwave
 npm install
 
-3. Start the development server:
+1. Start the development server:
 
 npm start
 
