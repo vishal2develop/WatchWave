@@ -56,7 +56,7 @@ git clone https://github.com/vishal2develop/WatchWave.git
 cd watchwave
 npm install
 
-1. Start the development server:
+3. Start the development server:
 
 npm start
 
