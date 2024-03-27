@@ -67,6 +67,7 @@ IOS - npx pod-install ios
 npm run android
 
 or
+
 npm run ios
 
 ## Contributions
