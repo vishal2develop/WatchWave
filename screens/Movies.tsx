@@ -5,7 +5,11 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Swiper from "react-native-swiper";
 import Slide from "../components/Slide";
 import HMedia from "../components/HMedia";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
 import { moviesApi } from "../api";
 import Loader from "../components/Loader";
 import Hlist from "../components/Hlist";
@@ -35,9 +39,19 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
     queryFn: moviesApi.nowPlaying,
   });
 
-  const { isLoading: upcomingLoading, data: upcomingData } = useQuery({
+  const {
+    isLoading: upcomingLoading,
+    data: upcomingData,
+    hasNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery({
     queryKey: ["movies", "upcoming"],
     queryFn: moviesApi.upcoming,
+    initialPageParam: 1,
+    getNextPageParam: (currentPage, lastPage) => {
+      const nextPage = currentPage.page + 1;
+      return nextPage > currentPage.total_pages ? null : nextPage;
+    },
   });
 
   const { isLoading: trendingLoading, data: trendingData } = useQuery({
@@ -53,12 +67,20 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
 
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
 
+  const loadMore = () => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+  };
+
   return loading ? (
     <Loader />
   ) : upcomingData ? (
     <FlatList
       onRefresh={onRefresh}
       refreshing={refreshing}
+      onEndReached={loadMore}
+      onEndReachedThreshold={0.4}
       ListHeaderComponent={
         <>
           <Swiper
@@ -96,7 +118,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
           <ComingSoonTitle>Coming Soon</ComingSoonTitle>
         </>
       }
-      data={upcomingData.results}
+      data={upcomingData.pages.map((page) => page.results).flat()}
       keyExtractor={(item) => item.id + ""}
       ItemSeparatorComponent={HSeparator}
       renderItem={({ item }) => (

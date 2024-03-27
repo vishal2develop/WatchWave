@@ -185,7 +185,7 @@ export const moviesApi: MovieFetchers = {
       options
     ).then((res) => res.json());
   },
-  upcoming: () => {
+  upcoming: ({ pageParam }) => {
     const options = {
       method: "GET",
       headers: {
@@ -194,7 +194,7 @@ export const moviesApi: MovieFetchers = {
       },
     };
     return fetch(
-      `${BASE_URL}/movie/upcoming?language=${LANGUAGE}&page=1&&region=${REGION}`,
+      `${BASE_URL}/movie/upcoming?language=${LANGUAGE}&page=${pageParam}`,
       options
     ).then((res) => res.json());
   },
