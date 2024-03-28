@@ -1,14 +1,31 @@
 {
   "expo": {
-    "name": "vomives",
-    "slug": "vomives",
+    "name": "WatchWave",
+    "slug": "WatchWave",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "plugins": [
-      "expo-font"
-    ]
+    "orientation": "portrait",
+    "icon": "./assets/appstore.png",
+    "splash": {
+      "image": "./assets/appstore.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pagepro.testpublishapp",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/playstore.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "plugins": ["expo-font"],
+    "web": {
+      "favicon": "./assets/playstore.png"
+    }
   },
-  "name": "vomives"
+  "name": "WatchWave"
 }
