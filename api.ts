@@ -152,14 +152,8 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const LANGUAGE = "en-US";
 const REGION = "IN";
 
-const trending = "";
-
-const nowPlaying = "";
-
-const upcoming = "";
-
 export const moviesApi: MovieFetchers = {
-  trending: () => {
+  trending: ({ pageParam }) => {
     const options = {
       method: "GET",
       headers: {
@@ -168,7 +162,7 @@ export const moviesApi: MovieFetchers = {
       },
     };
     return fetch(
-      `${BASE_URL}/trending/movie/week?language=${LANGUAGE}&page=1&&region=${REGION}`,
+      `${BASE_URL}/trending/movie/week?language=${LANGUAGE}&page=${pageParam}`,
       options
     ).then((res) => res.json());
   },
@@ -232,7 +226,7 @@ export const moviesApi: MovieFetchers = {
 };
 
 export const tvApi: TVFetchers = {
-  trending: () => {
+  trending: ({ pageParam }) => {
     const options = {
       method: "GET",
       headers: {
@@ -241,11 +235,11 @@ export const tvApi: TVFetchers = {
       },
     };
     return fetch(
-      `${BASE_URL}/trending/tv/day?language=${LANGUAGE}&page=1&&region=${REGION}`,
+      `${BASE_URL}/trending/tv/day?language=${LANGUAGE}&page=${pageParam}`,
       options
     ).then((res) => res.json());
   },
-  airingToday: () => {
+  airingToday: ({ pageParam }) => {
     const options = {
       method: "GET",
       headers: {
@@ -254,11 +248,11 @@ export const tvApi: TVFetchers = {
       },
     };
     return fetch(
-      `${BASE_URL}/tv/airing_today?language=${LANGUAGE}&page=1&&region=${REGION}`,
+      `${BASE_URL}/tv/airing_today?language=${LANGUAGE}&page=${pageParam}`,
       options
     ).then((res) => res.json());
   },
-  topRated: () => {
+  topRated: ({ pageParam }) => {
     const options = {
       method: "GET",
       headers: {
@@ -267,7 +261,7 @@ export const tvApi: TVFetchers = {
       },
     };
     return fetch(
-      `${BASE_URL}/tv/top_rated?language=${LANGUAGE}&page=1&&region=${REGION}`,
+      `${BASE_URL}/tv/top_rated?language=${LANGUAGE}&page=${pageParam}`,
       options
     ).then((res) => res.json());
   },

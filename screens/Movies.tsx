@@ -48,15 +48,25 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
     queryKey: ["movies", "upcoming"],
     queryFn: moviesApi.upcoming,
     initialPageParam: 1,
-    getNextPageParam: (currentPage, lastPage) => {
+    getNextPageParam: (currentPage) => {
       const nextPage = currentPage.page + 1;
       return nextPage > currentPage.total_pages ? null : nextPage;
     },
   });
 
-  const { isLoading: trendingLoading, data: trendingData } = useQuery({
+  const {
+    isLoading: trendingLoading,
+    data: trendingData,
+    hasNextPage: trendingHasNextPage,
+    fetchNextPage: trendingFetchNextPage,
+  } = useInfiniteQuery({
     queryKey: ["movies", "trending"],
     queryFn: moviesApi.trending,
+    initialPageParam: 1,
+    getNextPageParam: (currentPage) => {
+      const nextPage = currentPage.page + 1;
+      return nextPage > currentPage.total_pages ? null : nextPage;
+    },
   });
 
   const onRefresh = async () => {
@@ -67,9 +77,15 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
 
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
 
-  const loadMore = () => {
+  const loadMoreUpcomingMovies = () => {
     if (hasNextPage) {
       fetchNextPage();
+    }
+  };
+
+  const loadMoreTrendingMovies = () => {
+    if (trendingHasNextPage) {
+      trendingFetchNextPage();
     }
   };
 
@@ -79,7 +95,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
     <FlatList
       onRefresh={onRefresh}
       refreshing={refreshing}
-      onEndReached={loadMore}
+      onEndReached={loadMoreUpcomingMovies}
       onEndReachedThreshold={0.4}
       ListHeaderComponent={
         <>
@@ -113,7 +129,11 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = ({}) => {
             ))}
           </Swiper>
           {trendingData ? (
-            <Hlist title="Trending Movies" data={trendingData?.results} />
+            <Hlist
+              title="Trending Movies"
+              data={trendingData.pages.map((page) => page.results).flat()}
+              loadMore={loadMoreTrendingMovies}
+            />
           ) : null}
           <ComingSoonTitle>Coming Soon</ComingSoonTitle>
         </>

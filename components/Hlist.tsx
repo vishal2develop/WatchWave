@@ -23,15 +23,18 @@ export const HListSeparator = styled.View`
 interface HlistProps {
   title: string;
   data: Movie[] | TV[];
+  loadMore: () => void;
 }
 
-const Hlist: React.FC<HlistProps> = ({ title, data }) => {
+const Hlist: React.FC<HlistProps> = ({ title, data, loadMore }) => {
   return (
     <ListContainer>
       <ListTitle>{title}</ListTitle>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.4}
         contentContainerStyle={{ paddingHorizontal: 30 }}
         ItemSeparatorComponent={HListSeparator}
         data={data}
